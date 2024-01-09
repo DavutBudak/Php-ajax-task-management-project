@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://ajaxcalender.clicksuslabs.com/$1 [R,L]
+
+RewriteEngine On
+# Eğer URL'de "unauthorized.php" varsa
+RewriteCond %{REQUEST_URI} unauthorized\.php
+# Yeni hedef URL'ye yönlendir
+RewriteRule ^(.*)$ https://ajaxcalender.clicksuslabs.com/admin/unauthorized.php [L,R=301]

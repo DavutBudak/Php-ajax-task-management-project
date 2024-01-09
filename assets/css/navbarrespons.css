@@ -1,0 +1,251 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  word-wrap:break-word !important;
+  font-family: 'Open Sans', sans-serif;
+  }
+
+#container {
+  margin: 0 auto;
+  max-width: 890px;
+}
+
+
+.toggle,
+[id^=drop] {
+  display: none;
+}
+
+/* Giving a background-color to the .nav_news container. */
+.nav_news {
+  margin:0;
+  padding: 0;
+  background-color: #254441;
+    position: sticky;
+    z-index: 999;
+}
+
+#logo {
+  display: block;
+  padding: 0 30px;
+  float: left;
+  font-size:20px;
+  line-height: 60px;
+}
+#logoutdiv {
+  display: block;
+  padding: 0 30px;
+  float: right;
+  font-size:20px;
+  line-height: 60px;
+}
+
+/* Since we'll have the "ul li" "float:left"
+ * we need to add a clear after the container. */
+
+.nav_news:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+/* Removing padding, margin and "list-style" from the "ul",
+ * and adding "position:reltive" */
+
+@media screen and (min-width:768px) {
+    .nav_news ul{display: none !important;}
+    .logoutdiv{color: white;
+    display: block;
+    padding: 0 30px;
+    float: end;
+    font-size: 20px;
+    line-height: 60px;}
+  }
+.nav_news ul {
+  float: right;
+  padding:0;
+  margin:0;
+  list-style: none;
+  position: relative;
+  }
+
+/* Positioning the .nav_newsigation items inline */
+.nav_news ul li {
+  margin: 0px;
+  display:inline-block;
+  float: left;
+  background-color: #254441;
+  }
+
+/* Styling the links */
+.nav_news a {
+  display:block;
+  padding:14px 20px;
+  color:#FFF;
+  font-size:20px;
+  text-decoration:none;
+}
+
+
+.nav_news ul li ul li:hover { background: #000000; }
+
+/* Background color change on Hover */
+.nav_news a:hover {
+  background-color: #000000;
+}
+
+/* Hide Dropdowns by Default
+ * and giving it a position of absolute */
+.nav_news ul ul {
+  display: none;
+  position: absolute;
+  /* has to be the same number as the "line-height" of ".nav_news a" */
+  top: 60px;
+}
+
+/* Display Dropdowns on Hover */
+.nav_news ul li:hover > ul {
+  display:inherit;
+}
+
+/* Fisrt Tier Dropdown */
+.nav_news ul ul li {
+  width:170px;
+  float:none;
+  display:list-item;
+  position: relative;
+}
+
+/* Second, Third and more Tiers
+ * We move the 2nd and 3rd etc tier dropdowns to the left
+ * by the amount of the width of the first tier.
+*/
+.nav_news ul ul ul li {
+  position: relative;
+  top:-60px;
+  /* has to be the same number as the "width" of ".nav_news ul ul li" */
+  left:170px;
+}
+
+
+/* Change ' +' in order to change the Dropdown symbol */
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+
+
+/* Media Queries
+--------------------------------------------- */
+
+@media all and (max-width : 768px) {
+
+  #logo {
+    display: block;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    float: none;
+  }
+
+  .nav_news {
+    margin: 0;
+  }
+
+  /* Hide the .nav_newsigation menu by default */
+  /* Also hide the  */
+  .toggle + a,
+  .menu {
+    display: none;
+  }
+
+  /* Stylinf the toggle lable */
+  .toggle {
+    display: inline-block;
+    background-color: #254441;
+    padding:14px 20px;
+    color:#FFF;
+    text-decoration:none;
+    border:none;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .toggle:hover {
+    background-color: #000000;
+  }
+
+  /* Display Dropdown when clicked on Parent Lable */
+  [id^=drop]:checked + ul {
+    display: block;
+  }
+
+  /* Change menu item's width to 100% */
+  .nav_news ul li {
+    display: block;
+    width: 100%;
+    }
+
+  .nav_news ul ul .toggle,
+  .nav_news ul ul a {
+    padding: 0 40px;
+  }
+
+  .nav_news ul ul ul a {
+    padding: 0 80px;
+  }
+
+  .nav_news a:hover,
+  .nav_news ul ul ul a {
+    background-color: #000000;
+  }
+
+  .nav_news ul li ul li .toggle,
+  .nav_news ul ul a,
+  .nav_news ul ul ul a{
+    padding:14px 20px;
+    color:#FFF;
+    font-size:17px;
+  }
+
+
+  .nav_news ul li ul li .toggle,
+  .nav_news ul ul a {
+    background-color: #212121;
+  }
+
+  /* Hide Dropdowns by Default */
+  .nav_news ul ul {
+    float: none;
+    position:static;
+    color: #ffffff;
+    /* has to be the same number as the "line-height" of ".nav_news a" */
+  }
+
+  /* Hide menus on hover */
+  .nav_news ul ul li:hover > ul,
+  .nav_news ul li:hover > ul {
+    display: none;
+  }
+
+  /* Fisrt Tier Dropdown */
+  .nav_news ul ul li {
+    display: block;
+    width: 100%;
+  }
+
+  .nav_news ul ul ul li {
+    position: static;
+    /* has to be the same number as the "width" of ".nav_news ul ul li" */
+
+  }
+
+}
+
+@media all and (max-width : 330px) {
+
+  .nav_news ul li {
+    display:block;
+    width: 94%;
+  }
+
+}
